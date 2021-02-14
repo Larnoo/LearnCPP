@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 // 编译多个文件：gcc main.c swap.c -o main.ex
 #include "swap.h"
 #include "minmax.h"
@@ -8,6 +9,7 @@ void printBoolean();
 void printSwap();
 void printArray();
 void printConst();
+void printMalloc();
 int main(int argc, char const *argv[])
 {
   for (int i = 0; i < argc; i++)
@@ -15,13 +17,14 @@ int main(int argc, char const *argv[])
     char t[] = {'a','\0'};
     // argv[0] = t; // ok
     // argv[0][0] = 'c'; // Error
-    printf("%d: %lu, %s\n", i, *argv[i], argv[i]);
+    printf("%d: %c: %s\n", i, *argv[i], argv[i]);
   }
   // printDataTypeSize();
   // printBoolean();
   // printSwap();
   // printArray();
   printConst();
+  printMalloc();
   return 0;
 }
 // 获取基本数据类型的内存字节大小
@@ -75,4 +78,19 @@ void printConst()
   const int * const s = &a;
   // s = &b;
   // *s = 33;
+}
+void printMalloc()
+{
+  printf("sizeof(size_t)=%lu\n", sizeof(size_t));
+  int n = 5;
+  int* a = malloc(n * sizeof(int));
+  for (int i = 0; i < n; i++)
+  {
+    *(a+i) = i*5;
+  }
+  for (int i = 0; i < n; i++)
+  {
+    printf("array a[%d]=%d\n", i, a[i]);
+  }
+  free(a);
 }
