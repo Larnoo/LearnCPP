@@ -52,5 +52,9 @@
     const int a[]; // a这个指针指向的元素都是const int不能被修改。
 
     int sum(const int a[], int len); // 表明该函数不会对array中的元素进行修改。
-    
+
     ``` 
+22. malloc动态申请内存
+    1.  malloc申请内存后，需要手动调用free进行释放。
+    2.  malloc返回的指针类型为void *
+    3.  free释放时传入的指针必须为申请内存的首地址。
