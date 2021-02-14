@@ -7,16 +7,21 @@ void printDataTypeSize();
 void printBoolean();
 void printSwap();
 void printArray();
+void printConst();
 int main(int argc, char const *argv[])
 {
   for (int i = 0; i < argc; i++)
   {
-    printf("%d: %s\n", i, argv[i]);
+    char t[] = {'a','\0'};
+    // argv[0] = t; // ok
+    // argv[0][0] = 'c'; // Error
+    printf("%d: %lu, %s\n", i, *argv[i], argv[i]);
   }
-  printDataTypeSize();
-  printBoolean();
-  printSwap();
-  printArray();
+  // printDataTypeSize();
+  // printBoolean();
+  // printSwap();
+  // printArray();
+  printConst();
   return 0;
 }
 // 获取基本数据类型的内存字节大小
@@ -52,4 +57,22 @@ void printArray()
   int len = sizeof(a) / sizeof(a[0]);
   minmax(a, len, &min, &max);
   printf("min=%d, max=%d\n", min, max);
+}
+void printConst()
+{
+  const int a = 10;
+  int b = 20;
+  // a = 5; // error
+  b = 30;
+  int * const p = &a;
+  // p = &b;
+  *p = 50;
+
+  const int * q = &a;
+  // *q = 33;
+  q = &b;
+
+  const int * const s = &a;
+  // s = &b;
+  // *s = 33;
 }
