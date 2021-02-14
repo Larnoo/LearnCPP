@@ -1,27 +1,30 @@
 #include<stdio.h>
-#include<string.h>
-int main()
-{
+#include<stdlib.h>
 
-{
-int a = 6, b = 0, c = 3;
-printf("%d\n", (a&&b)||(b-c));
+enum color { red, yellow, green };
+
+void f(enum color c);
+
+struct date {
+  int month;
+  int day;
+  int year;
+};
+
+int main(int argc, char const *argv[]){
+  int i;
+  for(i=0; i<argc; i++){
+    printf("%d: %s\n", i,argv[i]);
+  }
+  enum color t;
+  scanf("%d", &t);
+  f(t);
+
+  struct date tody;
+  return 0;
 }
 
-char ch = -1;
-printf("%d\n", ch);
-
-char a[20]="cehiknqtw";
-char *s="fbla",*p;
-int i, j;
-for(p=s; *p; p++) {
-   j=0;
-   while (*p>=a[j] && a[j]!='\0') j++;
-   for(i=strlen(a); i>=j; i--) a[i+1] = a[i];
-   a[j]=*p;
+void f(enum color c){
+  printf("%d\n", c);
 }
-printf("%s\n", a);
 
-
- return 0;
-}
