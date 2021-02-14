@@ -2,9 +2,11 @@
 #include <stdbool.h>
 // 编译多个文件：gcc main.c swap.c -o main.ex
 #include "swap.h"
+#include "minmax.h"
 void printDataTypeSize();
 void printBoolean();
 void printSwap();
+void printArray();
 int main(int argc, char const *argv[])
 {
   for (int i = 0; i < argc; i++)
@@ -14,6 +16,7 @@ int main(int argc, char const *argv[])
   printDataTypeSize();
   printBoolean();
   printSwap();
+  printArray();
   return 0;
 }
 // 获取基本数据类型的内存字节大小
@@ -38,4 +41,15 @@ void printSwap()
   printf("swap before a=%d, b=%d\n", a, b);
   testSwap(&a, &b);
   printf("swap after a=%d, b=%d\n", a, b);
+}
+void printArray()
+{
+  int a[] = {1, 2, 3, 5, 44, 88, 72};
+  int min, max;
+  printf("sizeof(a)=%lu, sizeof(a[0])=%lu\n", sizeof(a), sizeof(a[0]));
+  printf("sizeof(sizeof return)=%lu\n", sizeof(sizeof(a)));
+  printf("a=%p\n", a);
+  int len = sizeof(a) / sizeof(a[0]);
+  minmax(a, len, &min, &max);
+  printf("min=%d, max=%d\n", min, max);
 }

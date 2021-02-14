@@ -3,6 +3,8 @@
         "stdlib.h": "c",
         "stdio.h": "c",
         "stdbool.h": "c",
-        "swap.h": "c"
+        "swap.h": "c",
+        "algorithm": "cpp",
+        "minmax.h": "c"
     }
 }
