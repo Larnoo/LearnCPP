@@ -52,7 +52,7 @@ void structopt()
     printPointWithPoint(&pa);
     printPoint(pb);
 
-    Point point = {.x=100, .y=300};
+    Point point = {.x=100, .z=300};
     printPointWithPoint(&point);
 }
 void printPoint(struct point p)
