@@ -6,6 +6,7 @@
 #include "minmax.h"
 #include "stringopt.h"
 #include "structopt.h"
+#include "arrayopt.h"
 void printDataTypeSize();
 void printBoolean();
 void printSwap();
@@ -14,6 +15,7 @@ void printConst();
 void printMalloc();
 void printMaxMalloc();
 void printCharIO();
+void printMutableArray();
 int main(int argc, char const *argv[])
 {
   for (int i = 0; i < argc; i++)
@@ -32,7 +34,8 @@ int main(int argc, char const *argv[])
   // printMaxMalloc();
   // printCharIO();
   // stringopt();
-  structopt();
+  // structopt();
+  printMutableArray();
   return 0;
 }
 // 获取基本数据类型的内存字节大小
@@ -121,4 +124,15 @@ void printCharIO()
     putchar(c);
   }
   printf("EOF\n");
+}
+void printMutableArray()
+{
+  Array a = array_create(3);
+  *array_at(&a, 0) = 10;
+  *array_at(&a, 1) = 20;
+  *array_at(&a, 2) = 30;
+  array_print(&a);
+  *array_at(&a, 8) = 80;
+  array_print(&a);
+  array_free(&a);
 }
