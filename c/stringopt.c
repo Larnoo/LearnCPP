@@ -3,6 +3,7 @@
 #include "stringopt.h"
 size_t mystrlen(const char *str);
 int mystrcmp(const char *str1, const char *str2);
+char *mystrcpy(char *restrict dst, const char *restrict src);
 void stringopt()
 {
     char a = 'a';
@@ -24,6 +25,14 @@ void stringopt()
     printf("using strcmp %s vs %s = %d\n", a1, a2, result);
     result = mystrcmp(a1, a2);
     printf("using mystrcmp %s vs %s = %d\n", a1, a2, result);
+
+    char src[] = "abc";
+    char srcNew[] = "xyz";
+    char dst[strlen(src)+1];
+    strcpy(dst, src);
+    mystrcpy(dst, srcNew);
+    printf("using strcpy src=%s, dst=%s\n", src, dst);
+    printf("using mystrcpy src=%s, dst=%s\n", srcNew, dst);
 }
 size_t mystrlen(const char *str)
 {
@@ -45,4 +54,13 @@ int mystrcmp(const char *str1, const char *str2)
         str2++;
     }
     return *str1 - *str2;
+}
+char *mystrcpy(char *restrict dst, const char *restrict src)
+{
+    char *ret = dst;
+    while (*dst++ = *src++)
+    {
+    }
+    *dst = '\0';
+    return ret;
 }
