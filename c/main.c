@@ -4,17 +4,20 @@
 // 编译多个文件：gcc main.c swap.c -o main.ex
 #include "swap.h"
 #include "minmax.h"
+#include "stringopt.h"
 void printDataTypeSize();
 void printBoolean();
 void printSwap();
 void printArray();
 void printConst();
 void printMalloc();
+void printMaxMalloc();
+void printCharIO();
 int main(int argc, char const *argv[])
 {
   for (int i = 0; i < argc; i++)
   {
-    char t[] = {'a','\0'};
+    char t[] = {'a', '\0'};
     // argv[0] = t; // ok
     // argv[0][0] = 'c'; // Error
     printf("%d: %c: %s\n", i, *argv[i], argv[i]);
@@ -23,8 +26,11 @@ int main(int argc, char const *argv[])
   // printBoolean();
   // printSwap();
   // printArray();
-  printConst();
-  printMalloc();
+  // printConst();
+  // printMalloc();
+  // printMaxMalloc();
+  // printCharIO();
+  stringopt();
   return 0;
 }
 // 获取基本数据类型的内存字节大小
@@ -67,15 +73,15 @@ void printConst()
   int b = 20;
   // a = 5; // error
   b = 30;
-  int * const p = &a;
+  int *const p = &a;
   // p = &b;
   *p = 50;
 
-  const int * q = &a;
+  const int *q = &a;
   // *q = 33;
   q = &b;
 
-  const int * const s = &a;
+  const int *const s = &a;
   // s = &b;
   // *s = 33;
 }
@@ -83,14 +89,34 @@ void printMalloc()
 {
   printf("sizeof(size_t)=%lu\n", sizeof(size_t));
   int n = 5;
-  int* a = malloc(n * sizeof(int));
+  int *a = malloc(n * sizeof(int));
   for (int i = 0; i < n; i++)
   {
-    *(a+i) = i*5;
+    // *(a++) = i*5;
+    *(a + i) = i * 5;
   }
   for (int i = 0; i < n; i++)
   {
     printf("array a[%d]=%d\n", i, a[i]);
   }
   free(a);
+}
+void printMaxMalloc()
+{
+  void *p = NULL;
+  int count = 0;
+  while ((p = malloc(1024 * 1024 * 1024)))
+  {
+    count++;
+  }
+  printf("分配了%dGB的内存空间\n", count);
+}
+void printCharIO()
+{
+  int c;
+  while ((c = getchar()) != EOF)
+  {
+    putchar(c);
+  }
+  printf("EOF\n");
 }
