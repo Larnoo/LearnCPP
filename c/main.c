@@ -110,6 +110,7 @@ void printMaxMalloc()
     count++;
   }
   printf("分配了%dGB的内存空间\n", count);
+<<<<<<< HEAD
 }
 void printCharIO()
 {
@@ -119,4 +120,6 @@ void printCharIO()
     putchar(c);
   }
   printf("EOF\n");
+=======
+>>>>>>> a700c8a47db7093f3b1baa2379cc14d91022dade
 }
