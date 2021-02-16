@@ -8,6 +8,12 @@ struct point
     int z;
 };
 typedef struct point Point;
+typedef union
+{
+    int i;
+    char ch[sizeof(int)];
+} CHI;
+ 
 void printPoint(struct point p);
 void printPointWithPoint(struct point *p);
 void structopt()
@@ -54,6 +60,14 @@ void structopt()
 
     Point point = {.x=100, .z=300};
     printPointWithPoint(&point);
+
+    CHI chi;
+    chi.i = 0x44776655;
+    for (int i = 0; i < sizeof(int); i++)
+    {
+        printf("%c\n", chi.ch[i]);
+    }
+    
 }
 void printPoint(struct point p)
 {
