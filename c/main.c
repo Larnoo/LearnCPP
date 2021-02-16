@@ -5,6 +5,7 @@
 #include "swap.h"
 #include "minmax.h"
 #include "stringopt.h"
+#include "structopt.h"
 void printDataTypeSize();
 void printBoolean();
 void printSwap();
@@ -30,7 +31,8 @@ int main(int argc, char const *argv[])
   // printMalloc();
   // printMaxMalloc();
   // printCharIO();
-  stringopt();
+  // stringopt();
+  structopt();
   return 0;
 }
 // 获取基本数据类型的内存字节大小

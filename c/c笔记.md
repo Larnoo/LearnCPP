@@ -71,3 +71,8 @@
     1.  restrict关键字，告诉编译器两个指针不指向同一数据。参考：https://www.zhihu.com/question/41653775
     2.  strchr 查找char在string中的位置。
     3.  strstr 查找str在string中的位置。
+26. 结构
+    1.  `enum color {red, blue, yellow}`, 枚举在c语言就是int。可以通过宏、const int来定义类似enum的变量。
+    2.  struct结构是值传递，不是引用传递。
+        1.  `(*p).xx` 等价于 `p->xx`即`->`含义为取指针指向的内容，然后访问改内容内部的变量。
+    3.  `typedef long int_64`. typedef 给数据类型起别名。 `typedef 原始类型 新类型名称`
