@@ -18,6 +18,8 @@ void printMaxMalloc();
 void printCharIO();
 void printMutableArray();
 void printLinkStruct();
+void printGlobalVariable();
+int gAll = 12;
 int main(int argc, char const *argv[])
 {
   for (int i = 0; i < argc; i++)
@@ -38,7 +40,10 @@ int main(int argc, char const *argv[])
   // stringopt();
   // structopt();
   // printMutableArray();
-  printLinkStruct();
+  // printLinkStruct();
+  printf("%s gAll = %d\n", __func__, gAll);
+  printGlobalVariable();
+  printf("%s after gAll = %d\n", __func__, gAll);
   return 0;
 }
 // 获取基本数据类型的内存字节大小
@@ -154,4 +159,10 @@ void printLinkStruct()
   printLinkedList(&list);
   linked_list_remove(&list, 2);
   printLinkedList(&list);
+}
+void printGlobalVariable()
+{
+  printf("%s gAll=%d\n", __func__, gAll);
+  gAll++;
+  printf("%s after gAll=%d\n", __func__, gAll);
 }
