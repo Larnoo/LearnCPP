@@ -5,6 +5,7 @@ typedef struct {
     int capability;
     int* array;
 } Array;
+extern int BLOCK;
 Array array_create(int init_size);
 void array_free(Array *a);
 int array_size(const Array *a);

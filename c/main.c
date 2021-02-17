@@ -55,11 +55,12 @@ int main(int argc, char const *argv[])
   // printStaticVariable();
   // printStaticVariable();
   // printStaticVariable();
-  printf("radius=2, the cirle area is %f\n", 2*2*PI);
-  printf(FORMAT, PI2);
-  PRT;
-  printf("__LINE__=%d, __FILE__=%s, __STDC__=%d\n", __LINE__, __FILE__, __STDC__);
-  printf("cube(5)=%d\n",cube(5));
+  // printf("radius=2, the cirle area is %f\n", 2*2*PI);
+  // printf(FORMAT, PI2);
+  // PRT;
+  // printf("__LINE__=%d, __FILE__=%s, __STDC__=%d\n", __LINE__, __FILE__, __STDC__);
+  // printf("cube(5)=%d\n",cube(5));
+  printf("arrayopt.h extern int BLOCK=%d\n", BLOCK);
   return 0;
 }
 // 获取基本数据类型的内存字节大小

@@ -1,7 +1,7 @@
 #include "arrayopt.h"
 #include <stdlib.h>
 #include <stdio.h>
-const int BLOCK = 16;
+int BLOCK = 16;
 Array array_create(int init_size)
 {
     Array ret;
