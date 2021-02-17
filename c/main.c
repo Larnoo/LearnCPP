@@ -21,6 +21,12 @@ void printLinkStruct();
 void printGlobalVariable();
 void printStaticVariable();
 int gAll, gg;
+#define PI 3.14
+#define PI2 2 * PI // 2 *PI
+#define FORMAT "2*PI=%f\n"
+#define PRT printf(" %f", PI);\
+            printf(" %f\n", PI2)
+#define cube(x) ((x)*(x)*(x))
 int main(int argc, char const *argv[])
 {
   for (int i = 0; i < argc; i++)
@@ -42,13 +48,18 @@ int main(int argc, char const *argv[])
   // structopt();
   // printMutableArray();
   // printLinkStruct();
-  printf("%s gAll=%d gg=%d\n", __func__, gAll, gg);
-  printGlobalVariable();
-  printf("%s after gAll=%d gg=%d\n", __func__, gAll, gg);
-  printStaticVariable();
-  printStaticVariable();
-  printStaticVariable();
-  printStaticVariable();
+  // printf("%s gAll=%d gg=%d\n", __func__, gAll, gg);
+  // printGlobalVariable();
+  // printf("%s after gAll=%d gg=%d\n", __func__, gAll, gg);
+  // printStaticVariable();
+  // printStaticVariable();
+  // printStaticVariable();
+  // printStaticVariable();
+  printf("radius=2, the cirle area is %f\n", 2*2*PI);
+  printf(FORMAT, PI2);
+  PRT;
+  printf("__LINE__=%d, __FILE__=%s, __STDC__=%d\n", __LINE__, __FILE__, __STDC__);
+  printf("cube(5)=%d\n",cube(5));
   return 0;
 }
 // 获取基本数据类型的内存字节大小
