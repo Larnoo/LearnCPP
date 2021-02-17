@@ -19,7 +19,8 @@ void printCharIO();
 void printMutableArray();
 void printLinkStruct();
 void printGlobalVariable();
-int gAll = 12;
+void printStaticVariable();
+int gAll, gg;
 int main(int argc, char const *argv[])
 {
   for (int i = 0; i < argc; i++)
@@ -41,9 +42,13 @@ int main(int argc, char const *argv[])
   // structopt();
   // printMutableArray();
   // printLinkStruct();
-  printf("%s gAll = %d\n", __func__, gAll);
+  printf("%s gAll=%d gg=%d\n", __func__, gAll, gg);
   printGlobalVariable();
-  printf("%s after gAll = %d\n", __func__, gAll);
+  printf("%s after gAll=%d gg=%d\n", __func__, gAll, gg);
+  printStaticVariable();
+  printStaticVariable();
+  printStaticVariable();
+  printStaticVariable();
   return 0;
 }
 // 获取基本数据类型的内存字节大小
@@ -162,7 +167,15 @@ void printLinkStruct()
 }
 void printGlobalVariable()
 {
-  printf("%s gAll=%d\n", __func__, gAll);
+  int gg = 20;
+  printf("%s gAll=%d gg=%d\n", __func__, gAll, gg);
   gAll++;
-  printf("%s after gAll=%d\n", __func__, gAll);
+  gg++;
+  printf("%s after gAll=%d gg=%d\n", __func__, gAll, gg);
+}
+void printStaticVariable()
+{
+  static int all = 33;
+  all += 2;
+  printf("%s *gg=%p *i=%p i=%d\n", __func__, &gg, &all, all);
 }
