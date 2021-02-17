@@ -77,3 +77,4 @@
         1.  `(*p).xx` 等价于 `p->xx`即`->`含义为取指针指向的内容，然后访问改内容内部的变量。
     3.  `typedef long int_64`. typedef 给数据类型起别名。 `typedef 原始类型 新类型名称`
     4.  `union`定义一个共用内存的数据结构。
+    5.  `sizeof(struct point)` 内存大小并不是简单的数据结构相加，里边涉及到`内存对齐`。参考：https://zhuanlan.zhihu.com/p/41039356

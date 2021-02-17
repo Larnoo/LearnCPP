@@ -34,7 +34,7 @@ int main(int argc, char const *argv[])
   // printMaxMalloc();
   // printCharIO();
   // stringopt();
-  // structopt();
+  structopt();
   printMutableArray();
   return 0;
 }
@@ -128,11 +128,15 @@ void printCharIO()
 void printMutableArray()
 {
   Array a = array_create(3);
-  *array_at(&a, 0) = 10;
-  *array_at(&a, 1) = 20;
-  *array_at(&a, 2) = 30;
-  array_print(&a);
-  *array_at(&a, 8) = 80;
-  array_print(&a);
-  array_free(&a);
+  Array *pa = &a;
+  *array_at(pa, 0) = 10;
+  *array_at(pa, 1) = 20;
+  *array_at(pa, 2) = 30;
+  array_print(pa);
+  *array_at(pa, 8) = 80;
+  array_print(pa);
+  array_free(pa);
+
+  printf("sizeof(struct Array) = %lu\n", sizeof(Array));
+  printf("sizeof(*p Array) = %lu\n", sizeof(pa));
 }

@@ -13,7 +13,7 @@ typedef union
     int i;
     char ch[sizeof(int)];
 } CHI;
- 
+
 void printPoint(struct point p);
 void printPointWithPoint(struct point *p);
 void structopt()
@@ -58,7 +58,7 @@ void structopt()
     printPointWithPoint(&pa);
     printPoint(pb);
 
-    Point point = {.x=100, .z=300};
+    Point point = {.x = 100, .z = 300};
     printPointWithPoint(&point);
 
     CHI chi;
@@ -67,7 +67,13 @@ void structopt()
     {
         printf("%c\n", chi.ch[i]);
     }
-    
+
+    printf("sizeof(struct Point) = %lu\n", sizeof(Point));
+    printf("sizeof(*p Point) = %lu\n", sizeof(&point));
+
+
+    printf("sizeof(union CHI) = %lu\n", sizeof(CHI));
+    printf("sizeof(*p CHI) = %lu\n", sizeof(&chi));
 }
 void printPoint(struct point p)
 {

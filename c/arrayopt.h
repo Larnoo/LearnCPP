@@ -2,6 +2,7 @@
 #define _arrayopt_
 typedef struct {
     int size;
+    int capability;
     int* array;
 } Array;
 Array array_create(int init_size);
