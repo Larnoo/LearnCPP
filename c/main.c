@@ -7,6 +7,7 @@
 #include "stringopt.h"
 #include "structopt.h"
 #include "arrayopt.h"
+#include "linkedlist.h"
 void printDataTypeSize();
 void printBoolean();
 void printSwap();
@@ -16,6 +17,7 @@ void printMalloc();
 void printMaxMalloc();
 void printCharIO();
 void printMutableArray();
+void printLinkStruct();
 int main(int argc, char const *argv[])
 {
   for (int i = 0; i < argc; i++)
@@ -34,8 +36,9 @@ int main(int argc, char const *argv[])
   // printMaxMalloc();
   // printCharIO();
   // stringopt();
-  structopt();
-  printMutableArray();
+  // structopt();
+  // printMutableArray();
+  printLinkStruct();
   return 0;
 }
 // 获取基本数据类型的内存字节大小
@@ -78,9 +81,9 @@ void printConst()
   int b = 20;
   // a = 5; // error
   b = 30;
-  int *const p = &a;
-  // p = &b;
-  *p = 50;
+  // int *const p = &a; // ok
+  // p = &b; // error
+  // *p = 50; // ok
 
   const int *q = &a;
   // *q = 33;
@@ -139,4 +142,16 @@ void printMutableArray()
 
   printf("sizeof(struct Array) = %lu\n", sizeof(Array));
   printf("sizeof(*p Array) = %lu\n", sizeof(pa));
+}
+void printLinkStruct()
+{
+  LinkedList list;
+  list.head = NULL;
+  linked_list_add(&list, 0);
+  linked_list_add(&list, 1);
+  linked_list_add(&list, 2);
+  linked_list_add(&list, 3);
+  printLinkedList(&list);
+  linked_list_remove(&list, 2);
+  printLinkedList(&list);
 }
