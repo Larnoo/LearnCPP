@@ -20,13 +20,15 @@ void printMutableArray();
 void printLinkStruct();
 void printGlobalVariable();
 void printStaticVariable();
+void printScanf();
 int gAll, gg;
 #define PI 3.14
 #define PI2 2 * PI // 2 *PI
 #define FORMAT "2*PI=%f\n"
-#define PRT printf(" %f", PI);\
-            printf(" %f\n", PI2)
-#define cube(x) ((x)*(x)*(x))
+#define PRT          \
+  printf(" %f", PI); \
+  printf(" %f\n", PI2)
+#define cube(x) ((x) * (x) * (x))
 int main(int argc, char const *argv[])
 {
   for (int i = 0; i < argc; i++)
@@ -60,7 +62,8 @@ int main(int argc, char const *argv[])
   // PRT;
   // printf("__LINE__=%d, __FILE__=%s, __STDC__=%d\n", __LINE__, __FILE__, __STDC__);
   // printf("cube(5)=%d\n",cube(5));
-  printf("arrayopt.h extern int BLOCK=%d\n", BLOCK);
+  // printf("arrayopt.h extern int BLOCK=%d\n", BLOCK);
+  printScanf();
   return 0;
 }
 // 获取基本数据类型的内存字节大小
@@ -190,4 +193,26 @@ void printStaticVariable()
   static int all = 33;
   all += 2;
   printf("%s *gg=%p *i=%p i=%d\n", __func__, &gg, &all, all);
+}
+void printScanf()
+{
+  printf("%+08d\n", 123);
+  printf("%+08d\n", -123);
+
+  printf("%+012.5f\n", 123.456);
+  printf("%+012.5f\n", -123.456);
+
+  printf("%+0*.*f\n", 12, 5, 123.456);
+  printf("%+0*.*f\n", 12, 5, -123.456);
+
+  printf("%hhd\n", 12345);
+  printf("%hd\n", 12345);
+
+  int n;
+  printf("%hhd hello! %n\n", 12345, &n);
+  printf("output char count is %d\n", n);
+
+  int a = scanf("%*d%d", &n);
+  int b = printf("input %d\n", n);
+  printf("scanf=%d, printf=%d\n", a, b);
 }

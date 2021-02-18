@@ -107,3 +107,34 @@
     1.  头文件
     2.  `int i;` 变量的定义
     3.  `extern int i;` 变量的声明
+31. printf & scanf
+    1.  printf
+        1.  `%[flags][width][.prec][hIL]type`
+            1.  flag
+                1.  `-`: 左对齐
+                2.  `+`: 前面放+或-
+                3.  `(spage)`: 正数留空
+                4.  `0`: 0填充
+            2.  with.prec
+                1.  number: 输出字符个数
+                2.  *: 占位代码配置输出字符的个数
+                3.  .number: 小数点后的字符数
+                4.  .*: 占位代码配置小数点后的字符数
+            3.  hIL
+                1.  hh：当做单个字节
+                2.  h: 当做short
+                3.  l: 当做long
+                4.  ll: 当做long long
+                5.  L: 当做long double
+    1.  scanf
+        1.  `%[flag]type`
+            1.  flag
+                1.  *: 跳过
+                2.  数字：最大字符数
+                3.  hh: char
+                4.  h: short
+                5.  l: long, double
+                6.  ll: long long
+                7.  L: long double
+
+32. `<`做重定向输入，`>`做重定向输出。eg: `main < a.txt > b.txt`
