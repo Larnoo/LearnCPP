@@ -30,9 +30,12 @@ void readFromFile()
         }
         printf("\n");
         int flag = feof(fp);
-        if(flag){
+        if (flag)
+        {
             printf("文件正常读取完毕！\n");
-        }else{
+        }
+        else
+        {
             printf("文件读取异常！\n");
         }
         fclose(fp);
@@ -42,8 +45,74 @@ void readFromFile()
         printf("文件打开失败\n");
     }
 }
+void writeBinaryFile()
+{
+    FILE *fp = fopen("fileout.binary", "w");
+    if (fp)
+    {
+        char data[3] = {1, 255, 3};
+        for (int i = 0; i < 3; i++)
+        {
+            //二进制文件，每次写入3个字节：0x01 0xff 0x03。写10次。
+            fwrite(&data, sizeof(char), 3, fp);
+        }
+        fflush(fp);
+        fclose(fp);
+        printf("文件写入成功\n");
+    }
+    else
+    {
+        printf("文件创建失败\n");
+    }
+}
+char *charToBit(char *strPtr, char c)
+{
+    unsigned int mask = 0x1;
+    for (int i = 7; i >= 0; i--)
+    {
+        char r = c & mask;
+        strPtr[i] = r ? '1' : '0';
+        mask = mask << 1;
+    }
+    return strPtr;
+}
+void readBinaryFile()
+{
+    FILE *fp = fopen("fileout.binary", "r");
+    if (fp)
+    {
+        char data[2];
+        int readCount = 0;
+        char charBitStr[9] = {0};
+        while ((readCount = fread(&data, sizeof(char), 2, fp)) != 0)
+        {
+            for (int i = 0; i < readCount; i++)
+            {
+                printf("0x%hhx\n", data[i]);
+                printf("%s\n", charToBit(charBitStr, data[i]));
+            }
+        }
+        printf("\n");
+        int flag = feof(fp);
+        if (flag)
+        {
+            printf("文件正常读取完毕！\n");
+        }
+        else
+        {
+            printf("文件读取异常！\n");
+        }
+        fclose(fp);
+    }
+    else
+    {
+        printf("文件读取失败\n");
+    }
+}
 void fileOpt()
 {
-    writeToFile();
-    readFromFile();
+    // writeToFile();
+    // readFromFile();
+    writeBinaryFile();
+    readBinaryFile();
 }
