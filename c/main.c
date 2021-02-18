@@ -8,6 +8,7 @@
 #include "structopt.h"
 #include "arrayopt.h"
 #include "linkedlist.h"
+#include "fileopt.h"
 void printDataTypeSize();
 void printBoolean();
 void printSwap();
@@ -63,7 +64,8 @@ int main(int argc, char const *argv[])
   // printf("__LINE__=%d, __FILE__=%s, __STDC__=%d\n", __LINE__, __FILE__, __STDC__);
   // printf("cube(5)=%d\n",cube(5));
   // printf("arrayopt.h extern int BLOCK=%d\n", BLOCK);
-  printScanf();
+  // printScanf();
+  fileOpt();
   return 0;
 }
 // 获取基本数据类型的内存字节大小
