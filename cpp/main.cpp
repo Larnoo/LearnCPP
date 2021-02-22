@@ -1,4 +1,5 @@
 #include <iostream>
+#include "reference.h"
 // using namespace std;
 
 using std::cout;
@@ -7,6 +8,7 @@ void hello();
 int main()
 {
     hello();
+    testReferenceVariable();
     return 0;
 }
 void hello()
