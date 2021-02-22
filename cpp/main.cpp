@@ -3,11 +3,13 @@
 
 using std::cout;
 using std::endl;
-
+void hello();
 int main()
 {
-    int a = 0;
-    a++;
-    cout << "Hello World! using static import." << endl;
+    hello();
     return 0;
+}
+void hello()
+{
+    cout << "Hello World! using static import." << endl;
 }
