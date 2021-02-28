@@ -138,3 +138,15 @@
                 7.  L: long double
 
 32. `<`做重定向输入，`>`做重定向输出。eg: `main < a.txt > b.txt`
+33. 文件读写
+34. 底层操作
+    1.  按位&、|、~、^、<<、>>
+    2.  位段
+    ``` 
+    struct UO {
+        unsigned int leading : 3;
+        unsigned int FLAG1 : 1;
+        unsigned int FLAG2 : 1;
+        int trailing : 27;
+    }
+    ```
